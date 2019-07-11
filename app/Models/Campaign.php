@@ -1,14 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Position extends Model
+class Campaign extends Model
 {
-    protected $table = 'positions';
+    protected $table = 'campaigns';
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'description'];
 
     public function employees()
     {

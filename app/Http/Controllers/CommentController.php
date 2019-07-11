@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use App\Comment;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {

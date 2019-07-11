@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Position;
+use App\Models\Position;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

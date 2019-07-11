@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Campaign;
+use App\Models\Campaign;
 
 class CampaignController extends Controller
 {
