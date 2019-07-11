@@ -13,6 +13,8 @@ class CreateCampaignsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->timestamps();
+
+            $table->unique('title', 'title');
         });
     }
 
