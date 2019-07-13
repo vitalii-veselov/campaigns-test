@@ -8,40 +8,41 @@ use App\Models\Campaign;
 
 class CampaignController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(): array
     {
-        $campaigns = Campaign::all();
-
-        return new JsonResponse($campaigns);
+        return Campaign::all();
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): Campaign
     {
         $validatedData = $request->validate([
             'title' => 'required|unique:campaigns|max:255',
             'description' => 'required',
         ]);
-        Campaign::create($validatedData);
 
-        return $this->getSuccessResponse();
+        return Campaign::create($validatedData);
     }
 
-    public function show(int $id): JsonResponse
+    public function show(int $id): Campaign
     {
-        return new JsonResponse(Campaign::findOrFail($id));
+        return Campaign::findOrFail($id);
     }
 
     public function update(Request $request, Campaign $campaign): JsonResponse
     {
-        $campaign->update($request->only(['title', 'description']));
+        $isUpdated = $campaign->update($request->only(['title', 'description']));
 
-        return $this->getSuccessResponse();
+        return $isUpdated
+            ? $this->getSuccessResponse()
+            : $this->getFailResponse();
     }
 
     public function destroy(int $id)
     {
-        Campaign::findOrFail($id)->delete();
+        $isDeleted = Campaign::findOrFail($id)->delete();
 
-        return $this->getSuccessResponse();
+        return $isDeleted
+            ? $this->getSuccessResponse()
+            : $this->getFailResponse();
     }
 }

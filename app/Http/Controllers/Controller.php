@@ -16,4 +16,9 @@ class Controller extends BaseController
     {
         return new JsonResponse('Okay', 200);
     }
+
+    protected function getFailResponse(): JsonResponse
+    {
+        return new JsonResponse('Fail', 400);
+    }
 }
